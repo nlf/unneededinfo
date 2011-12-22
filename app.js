@@ -297,5 +297,5 @@ app.get('/logout', function (req, res) {
 });
 
 process.setuid(config.blogUser);
-app.listen(9000);
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+app.listen(config.blogPort);
+console.log("Express server listening on port %d", app.address().port);

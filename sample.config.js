@@ -9,3 +9,4 @@ exports.blogUser = '<YOUR USER>';
 exports.blogTitle = '<YOUR BLOGS TITLE>';
 exports.blogTag = '<YOUR BLOGS TAGLINE>';
 exports.disqusName = '<YOUR DISQUS SHORTNAME>';
+exports.blogPort = 9000;
