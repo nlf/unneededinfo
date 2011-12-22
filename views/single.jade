@@ -1,0 +1,49 @@
+append head
+  script(src='/jquery.js')
+  script(src='/prettify/prettify.js')
+  link(rel='stylesheet', href='/prettify/prettify.css')
+  script
+    $(document).ready( function () {
+      prettyPrint();
+    });
+.span10
+  h3
+    a.article-title(href='/post/#{article.doc.slug}') #{article.doc.title}
+  div!= marked(article.doc.body)
+  - var timestamp = new Date(parseInt(article.key))
+  - var postTime = timestamp.getHours() + ":" + timestamp.getMinutes() + " on " + timestamp.getMonth() + "/" + timestamp.getDate() + "/" + timestamp.getFullYear() 
+  span.label Posted by #{article.doc.author} at !{postTime}
+  text &nbsp;
+  if user
+    if user.admin == 'true'
+      span.label.success
+        a.comments(href='/post/#{article.doc.slug}/edit') Edit
+  #disqus_thread
+  script
+    var disqus_shortname = '#{disqus}'; // required: replace example with your forum shortname
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+  a.dsq-brlink(href='http://disqus.com')
+    | blog comments powered by
+    span.logo-disqus Disqus
+.span4
+  dl
+    dt Posts
+      each post in posts
+        dd
+          a(href='/post/#{post.slug}') #{post.title}
+    dt Admin
+      if user
+        dd
+          a(href='/logout') Log out
+        - if (user.admin == 'true')
+          dd
+            a(href='/post/new') New post
+          dd
+            a(href='/users') Edit users
+      else
+        dd
+          a(href='/login') Log in

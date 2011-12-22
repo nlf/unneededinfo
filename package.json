@@ -1,0 +1,16 @@
+{
+    "name": "unneededinfo"
+  , "version": "1.0.0"
+  , "private": true
+  , "dependencies": {
+      "express": ""
+    , "jade": ""
+    , "nstore": "git+https://github.com/stuarts/nstore.git"
+    , "express-csrf": ""
+    , "passport": ""
+    , "passport-twitter": ""
+    , "fermata": ""
+    , "connect-gzip": ""
+    , "marked": "git+https://github.com/nathan-lafreniere/marked.git"
+  }
+}

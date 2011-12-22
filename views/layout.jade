@@ -1,0 +1,16 @@
+!!! 5
+html
+  block head
+    head
+      title!= title
+      link(rel='stylesheet', href='/bootstrap.min.css')
+      link(rel='stylesheet', href='/links.css')
+  body
+    .container
+      .content
+        .page-header
+            h1
+              a.article-title(href='/') #{title}
+              small &nbsp;#{tagline}
+        .row
+            != body

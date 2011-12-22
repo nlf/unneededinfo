@@ -1,0 +1,43 @@
+append head
+  script(src='/jquery.js')
+  script(src='/jquery.textarea.js')
+  script
+    $(document).ready(function () {
+      $("textarea").tabby();
+    });
+.span12
+  - if (typeof(article) != 'undefined')
+    - var action = "/post/" + article.slug + "/edit"
+  - else
+    - var action = "/post/new"
+  form#postForm(action=action, method="post")
+    fieldset
+      if typeof(article) != 'undefined'
+        legend Edit post
+      else
+        legend New post
+      .clearfix
+        label(for="postTitle") Title
+        .input
+          if typeof(article) != 'undefined'
+            input.span8#postTitle(name="title", value=article.title)
+          else
+            input.span8#postTitle(name="title")
+      .clearfix
+        label(for="postBody") Body
+        .input
+          textarea.span8#postBody(name="body", rows="15")
+            if typeof(article) != 'undefined'
+              #{article.body}
+      input(type="hidden", name="_csrf", value=csrf)
+  if typeof(article) != 'undefined'
+    - var action = "/post/" + article.slug + "/delete"
+    form#delForm(action=action, method="post")
+      input(type="hidden", name="_csrf", value=csrf)
+  .actions
+    button.btn.primary(type="submit", form="postForm") Save  
+    text &nbsp;
+    if typeof(article) != 'undefined'
+      button.btn.danger(type="submit", form="delForm") Delete
+      text &nbsp;
+    button.btn.default(onClick="location.href='/';") Cancel

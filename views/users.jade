@@ -1,0 +1,23 @@
+.span10
+  form#userForm(action='/users/edit', method='post')
+    input(type="hidden", name="csrf", value=csrf)
+    table.zebra-striped
+      thead
+        tr
+          th Admin
+          th Username
+          th Full Name
+      tbody
+        each user in users
+          tr
+            td
+              - if (user.admin == 'true')
+                input(type='checkbox', name='#{user.id}', value='true', checked)
+              - else
+                input(type='checkbox', name='#{user.id}', value='true')
+            td
+              #{user.username}
+            td
+              #{user.full_name}
+  .actions
+    button.btn.primary(type="submit", form="userForm") Save
