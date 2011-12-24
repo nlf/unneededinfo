@@ -4,6 +4,7 @@ exports.twitterSecret = '<YOUR TWITTER API SECRET>';
 exports.blogDomain = '<YOUR DOMAIN>';
 exports.dataPath = '/usr/local/var/lib/blog/';
 exports.logPath = '/usr/local/var/log/blog/';
+exports.blogTheme = 'default';
 // This is the user you want the process to run as
 exports.blogUser = '<YOUR USER>';
 exports.blogTitle = '<YOUR BLOGS TITLE>';

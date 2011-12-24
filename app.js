@@ -86,7 +86,7 @@ var users = nStore.new(config.dataPath + '/users.db', function (err) {
     console.log('Loaded users database');
 });
 
-app.set('views', __dirname + '/views');
+app.set('views', __dirname + '/themes/' + config.blogTheme + '/');
 app.set('view engine', 'jade');
 
 app.use(express.bodyParser());
